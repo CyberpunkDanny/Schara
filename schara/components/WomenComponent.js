@@ -12,9 +12,9 @@ class Women extends Component{
         };
     }
     
-    static navigationOptions: {
+    static navigationOptions = {
         title: 'Women'
-    }
+    };
     
     render(){
         const renderWomenItem = ({item, index})=>{

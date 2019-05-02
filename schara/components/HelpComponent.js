@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 
-class About extends Component{
+class Help extends Component{
     
     static navigationOptions = {
-        title: 'About Schara'
+        title: 'Help'
     };
 
     render(){
         return(
             <View>
-                <Text>About</Text>
+                <Text>Help</Text>
             </View>
         );
     }
 }
 
-export default About;
+export default Help;

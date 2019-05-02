@@ -9,14 +9,13 @@ class BangleDetail extends Component{
     constructor(props){
         super(props);
         this.state = {
-            bangles: BANGLES,
-            currentBangle: null
+            bangles: BANGLES
         };
     }
     
     static navigationOptions = {
         title: 'Bangle'
-    }
+    };
 
     render(){
         
@@ -25,8 +24,6 @@ class BangleDetail extends Component{
         if(bangleId != null){
             
             const bangle = this.state.bangles[+bangleId];
-            
-            this.setState({currentBangle: bangle});
             
             return (
                 <Card featuredTitle={bangle.name} image={ require('../shared/images/1.jpg')}>

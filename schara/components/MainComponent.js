@@ -3,40 +3,112 @@ import { View, Platform } from 'react-native';
 
 import Women from './WomenComponent';
 import BangleDetail from './BangleDetailComponent';
-import { BANGLES } from '../shared/bangles';
+import Home from './HomeComponent';
+import About from './AboutComponent';
+import Help from './HelpComponent';
 
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 const WomenNavigator = createStackNavigator({
     Women: {screen: Women},
     BangleDetail: {screen: BangleDetail}
 }, {
-    initialRoutename: 'Women',
+    initialRouteName: 'Women',
     navigationOptions: {
         headerStyle: {
-            backgroundColor: '#0ff'
+            backgroundColor: '#d6bd77'
         },
-        headerTintColor: '#0ff',
+        headerTintColor: '#23221f',
         headerTitleStyle: {
-            color: '#0ff'
+            color: '#23221f'
         }
     }
 });
 
-class Main extends Component{
-    constructor(props){
-        super(props);
-        
-        this.state = {
-            bangles: BANGLES,
-            selectedBangle: null
-        };
+const HomeNavigator = createStackNavigator({
+    Schara: {screen: Home}
+}, {
+    navigationOptions: {
+        headerStyle: {
+            backgroundColor: '#d6bd77'
+        },
+        headerTintColor: '#23221f',
+        headerTitleStyle: {
+            color: '#23221f'
+        }
+    }
+});
+
+const HelpNavigator = createStackNavigator({
+    Help: {screen: Help}
+}, {
+    navigationOptions: {
+        headerStyle: {
+            backgroundColor: '#d6bd77'
+        },
+        headerTintColor: '#23221f',
+        headerTitleStyle: {
+            color: '#23221f'
+        }
+    }
+});
+
+const AboutNavigator = createStackNavigator({
+    About: {screen: About}
+}, {
+    navigationOptions: {
+        headerStyle: {
+            backgroundColor: '#d6bd77'
+        },
+        headerTintColor: '#23221f',
+        headerTitleStyle: {
+            color: '#23221f'
+        }
+    }
+});
+
+const MainNavigator = createDrawerNavigator({
+    Home: {
+        screen: HomeNavigator,
+        navigationOptions: {
+            title: 'Home',
+            drawerLabel: 'Home'
+        }
+    },
+    
+    Women: {
+        screen: WomenNavigator,
+        navigationOptions: {
+            title: 'Women',
+            drawerLabel: 'Women'
+        }        
+    },
+    
+    Help: {
+        screen: HelpNavigator,
+        navigationOptions: {
+            title: 'Help',
+            drawerLabel: 'Help'
+        }
+    },
+    
+    About: {
+        screen: AboutNavigator,
+        navigationOptions: {
+            title: 'About Us',
+            drawerLabel: 'About Us'
+        }
     }
     
+}, {
+    drawerBrackgroundColor: '#2d2a20'
+});
+
+class Main extends Component{    
     render(){
         return(
             <View style={ {flex: 1, paddingTop: Platform.OS === 'ios'? 0 : Expo.Constants.statusBarHeight} }>
-                <WomenNavigator />
+                <MainNavigator />
             </View>
         );
     }
