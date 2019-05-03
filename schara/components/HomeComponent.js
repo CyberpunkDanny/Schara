@@ -1,20 +1,12 @@
 import React, {Component} from 'react';
-import {ScrollView, Text} from 'react-native';
-import {Card} from 'react-native-elements';
+import {View, ScrollView, Text, Image, StyleSheet, Dimensions} from 'react-native';
+import {Tile, Card, Button, Icon} from 'react-native-elements';
 import { BANGLES } from '../shared/bangles';
 
-function RenderItem({item}){
-    if(item !== null){
-        return(
-            <Card featuredTitle={item.name} image={ require('../shared/images/1.jpg')}>
-                <Text style={ {margin: 10} }>
-                    {item.description}
-                </Text>
-            </Card>
-        );
-    }
-    else return(<Text></Text>);
-}
+var { height } = Dimensions.get('window');
+ 
+var box_count = 3;
+var box_height = height / box_count;
 
 class Home extends Component{
     constructor(props){
@@ -25,18 +17,46 @@ class Home extends Component{
     }
     
     static navigationOptions = {
-        title: 'Home'
+        title: 'Schara'
     };
 
     render(){
         return(
-            <ScrollView>
-                <RenderItem item={this.state.bangles.filter((bangle)=>bangle.label === 'Selling Fast')[0]} />
-                <RenderItem item={this.state.bangles.filter((bangle)=>bangle.label === 'Selling Fast')[0]} />
-                <RenderItem item={this.state.bangles.filter((bangle)=>bangle.label === 'Selling Fast')[0]} />
+            <ScrollView style={styles.container}>
+                <View style={[styles.box, styles.box1]}></View>
+                <View style={[styles.box, styles.box2]}></View>
+                <View style={[styles.box, styles.box3]}></View>
             </ScrollView>
         );
     }
 }
+
+/*
+const styles = StyleSheet.create({
+    cardBox: {
+        flexDirection: 'row',
+        justifyContent: 'center'
+    }
+});
+*/
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column'
+  },
+  box: {
+    height: box_height
+  },
+  box1: {
+    backgroundColor: '#2196F3'
+  },
+  box2: {
+    backgroundColor: '#8BC34A'
+  },
+  box3: {
+    backgroundColor: '#e3aa1a'
+  }
+});
 
 export default Home;
