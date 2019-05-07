@@ -10,6 +10,23 @@ var boxCount = 3;
 var boxWidth = deviceWidth / boxCount;
 var boxHeight = deviceHeight / (boxCount * 2);
 
+
+const Carousel = (props) => {
+    var { images } =  props;
+    
+    if(images && images.length){
+        return(
+            <View>
+                <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
+                    {images.map((image)=> <Image source={image.source}/>)}
+                </ScrollView>
+            </View>
+        );
+    }
+    else return null;
+}
+
+
 class Home extends Component{
     constructor(props){
         super(props);
@@ -25,7 +42,7 @@ class Home extends Component{
     render(){
         return(
             <ScrollView style={{backgroundColor: '#e8dcc9'}}>
-            
+                
                 <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', paddingTop: 5}}>
                     <View style={{width: deviceWidth/3.2, height: deviceHeight/8, backgroundColor: 'powderblue'}}>
                         <Image source={require('../shared/images/saleBox.jpg')} style={{width: deviceWidth/3.2, height: deviceHeight/8, position: 'absolute'}}/>
@@ -41,15 +58,19 @@ class Home extends Component{
                     </View>
                 </View>
                 
+                
                 <ScrollView contentContainerStyle={{flex: 1, flexDirection: 'column', justifyContent: 'center', paddingTop: 10}}>
                     <View style={{width: deviceWidth, height: deviceHeight/3.2, backgroundColor: '#e8dcc9' }}>
-                        
+                        <Image source={require('../shared/images/bangleOne.jpg')} style={{width: deviceWidth, height: deviceHeight/3.5}}/>
                     </View>
                     <View style={{width: deviceWidth, height: deviceHeight/3.2, backgroundColor: '#e8dcc9' }}>
-                        <Tile imageSrc={require('../shared/images/sale.jpg')} imageContainerStyle={{width: deviceWidth, height: deviceHeight/3.2}} />
+                        <Tile featured imageSrc={require('../shared/images/bangleTwo.jpg')} title={'CASUAL WEAR'} caption={'Most Popular'} titleStyle={{fontFamily: 'notoserif'}} imageContainerStyle={{width: deviceWidth, height: deviceHeight/3.5}} />
                     </View>
                     <View style={{width: deviceWidth, height: deviceHeight/3.2, backgroundColor: '#e8dcc9' }}>
-                        <Tile imageSrc={require('../shared/images/wedding.jpg')} title="Wedding Collection" caption="UPTO 50% OFF" featured titleStyle={{fontFamily: 'notoserif'}} imageContainerStyle={{width: deviceWidth, height: deviceHeight/3.2}} />
+                        <Tile featured imageSrc={require('../shared/images/wedding.jpg')} title={'Wedding Collection'} caption={'UPTO 50% OFF'} titleStyle={{fontFamily: 'notoserif'}} imageContainerStyle={{width: deviceWidth, height: deviceHeight/3.5}} />
+                    </View>
+                    <View style={{width: deviceWidth, height: deviceHeight/3.2, backgroundColor: '#e8dcc9' }}>
+                        <Tile imageSrc={require('../shared/images/bangleOne.jpg')} imageContainerStyle={{width: deviceWidth, height: deviceHeight/3.5}} />
                     </View>
                 </ScrollView>
             
